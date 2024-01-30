@@ -50,9 +50,7 @@
         <img src="buga1.png" id="coche1" name="1" value="buga 1" >
         <img src="buga2.png" id="coche2" name="2" value="buga 2" >
     </div>
-    <div id="campoBoton">
-        <input type="button" id="btnIniciar" value="Iniciar">
-    </div>
+
     <div id="Resultado"></div>
     <script>
         
@@ -66,20 +64,18 @@
             const coche2 = document.getElementById("coche2");
             coche1.setAttribute("left","10");
             coche2.setAttribute("left","10");
-            
-            
-        
+
+
             let carrera = setInterval(moverCoche,10);
-            
-            
+
 
             function moverCoche(){
                 let velocidadCoche1 = Math.floor(Math.random()*5);
                 posicionActual1 += velocidadCoche1;
                 let pixeles = posicionActual1 + "px";
                 coche1.style.left = pixeles;
-                
-                let velocidadCoche2 = Math.floor(Math.random()*5);            
+
+                let velocidadCoche2 = Math.floor(Math.random()*5);
                 posicionActual2 += velocidadCoche2;
                 let pixeles2 = posicionActual2 + "px";
                 coche2.style.left = pixeles2;
