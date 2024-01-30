@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 1</title>
+    <style>
+        #campo {
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-wrap: wrap; 
+            height: 500px;
+            width: calc(100% - 20px);
+            background-color:  rgb(148, 245, 245);;
+        }
+
+       
+        #coche1 { 
+            position:absolute;
+            height: 50px;
+            width: 125px;
+            top: 10px;
+            left: 10px;
+        }
+
+        #coche2 {  
+            position:absolute;
+            height: 50px;
+            width: 125px;
+            top: 450px;
+            left: 10px;
+        }
+
+        #campoBoton{
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            background-color: rgb(89, 94, 94);
+            
+            height: calc(100% - 20px);
+            width: calc(100% - 20px);
+        }
+    </style>
+</head>
+
+<body>
+    <div name="coches" id="campo">
+        <img src="buga1.png" id="coche1" name="1" value="buga 1" >
+        <img src="buga2.png" id="coche2" name="2" value="buga 2" >
+    </div>
+    <div id="campoBoton">
+        <input type="button" id="btnIniciar" value="Iniciar">
+    </div>
+    <div id="Resultado"></div>
+    <script>
+        
+
+        
+        window.onload = function(){
+            let eleccion = parseInt(prompt("1 o 2"));
+            let posicionActual1 = 10;
+            let posicionActual2 = 10;
+            const coche1 = document.getElementById("coche1");
+            const coche2 = document.getElementById("coche2");
+            coche1.setAttribute("left","10");
+            coche2.setAttribute("left","10");
+            
+            
+        
+            let carrera = setInterval(moverCoche,10);
+            
+            
+
+            function moverCoche(){
+                let velocidadCoche1 = Math.floor(Math.random()*5);
+                posicionActual1 += velocidadCoche1;
+                let pixeles = posicionActual1 + "px";
+                coche1.style.left = pixeles;
+                
+                let velocidadCoche2 = Math.floor(Math.random()*5);            
+                posicionActual2 += velocidadCoche2;
+                let pixeles2 = posicionActual2 + "px";
+                coche2.style.left = pixeles2;
+
+                if(posicionActual1 > window.innerWidth - 150 || posicionActual2 > window.innerWidth - 150){
+                    clearInterval(carrera);
+                    if(posicionActual1 > posicionActual2){
+                        let cartel = document.createElement("span");
+                        if(eleccion === 1) cartel.innerHTML = "Has ganado";
+                        else cartel.innerHTML = "Has perdido";
+                        document.getElementById("Resultado").appendChild(cartel);
+                    }
+                    if(posicionActual1 < posicionActual2){
+                        let cartel = document.createElement("span");
+                        if(eleccion === 2) cartel.innerHTML = "Has ganado";
+                        else cartel.innerHTML = "Has perdido";
+                        document.getElementById("Resultado").appendChild(cartel);
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
