@@ -41,6 +41,7 @@ class Figura {
 
 class Cuadrado extends Figura{
 
+
     dibujar() {
         console.log("dibujar cuadrado");
         let div = document.getElementById("figura");
@@ -84,6 +85,5 @@ class Circulo extends Figura{
         div.removeAttribute("class");
     }
 }
-
 
 window.onload = iniciar;
